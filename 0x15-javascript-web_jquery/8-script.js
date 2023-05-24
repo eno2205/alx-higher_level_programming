@@ -1,7 +1,10 @@
-const endpoint = 'https://swapi-api.hbtn.io/api/films/?format=json';
-
-$.get(endpoint, data => {
-  data.results.forEach(movie => {
-    $('UL#list_movies').append(`<li>${movie.title}</li>`);
+$(function () {
+  $.get('https://swapi-api.hbtn.io/api/films/?format=json', function (resp, status) {
+    if (status === 'success') {
+      let films = resp.results;
+      for (let idx in films) {
+        $('#list_movies').append('<li>' + films[idx].title + '</li>');
+      }
+    }
   });
 });

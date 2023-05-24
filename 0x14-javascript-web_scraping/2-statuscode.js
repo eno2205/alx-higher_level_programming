@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
-const endpoint = process.argv[2];
-
-request(endpoint, (err, res, body) => {
-  if (!err) console.log('code:', res.statusCode);
+request(process.argv[2], function (error, response) {
+  if (error == null) {
+    console.log('code: ' + response.statusCode);
+  }
 });

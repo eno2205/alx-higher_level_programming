@@ -1,13 +1,9 @@
 #!/usr/bin/node
 const request = require('request');
 const fs = require('fs');
-const endpoint = process.argv[2];
-const file = process.argv[3];
 
-request(endpoint, (err, res, body) => {
-  if (err) throw err;
-
-  fs.writeFile(file, body, 'utf8', (err) => {
-    if (err) throw err;
-  });
+request(process.argv[2], function (err, response, body) {
+  if (err == null) {
+    fs.writeFileSync(process.argv[3], body);
+  }
 });

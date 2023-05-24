@@ -1,10 +1,8 @@
-const endpoint = 'https://www.fourtonfish.com/hellosalut/?lang=';
-
-$('document').ready(() => {
-  $('INPUT#btn_translate').click(() => {
-    const lang = $('INPUT#language_code').val();
-    $.get(endpoint + lang, (data) => {
-      $('DIV#hello').text(data.hello);
+$('document').ready(function () {
+  const url = 'https://www.fourtonfish.com/hellosalut/?';
+  $('INPUT#btn_translate').click(function () {
+    $.get(url + $.param({ lang: $('INPUT#language_code').val() }), function (data) {
+      $('DIV#hello').html(data.hello);
     });
   });
 });
